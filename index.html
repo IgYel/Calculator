@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/style.min.css" />
+  </head>
+  <body>
+    <header class="header">
+      <ul class="buttonList">
+        <li id="EndDayCalc_Button">
+          <a href=".#section1"><img src="/icons/Calculator.png" alt="" /></a>
+        </li>
+        <li id="ShiftFinishWriter_Button">
+          <a href="#section2"><img src="/icons/Shift.png" alt="" /></a>
+        </li>
+        <li id="AllShiftsCalc_Button">
+          <a href="#section3"
+            ><img src="/icons/finalCalculator.png" alt=""
+          /></a>
+        </li>
+      </ul>
+    </header>
+
+    <!-- ? First Section -->
+    <section id="section1" class="EndDayCalc">
+      <input id="Krones" type="number" placeholder="Kč Total" />
+      <input id="Euros" type="number" placeholder="€ Total" />
+      <input id="Dollars" type="number" placeholder="$ Total" />
+      <input id="MKrones" type="number" placeholder="Kč was" />
+      <input id="MEuros" type="number" placeholder="€ was" />
+      <input id="MDollars" type="number" placeholder="$ was" />
+
+      <div id="SubmitButton">Calculate</div>
+
+      <div id="resultOfDay"></div>
+    </section>
+
+    <!-- ! Second Section -->
+
+    <section id="section2" class="ShiftFinishWriter">
+      <input id="StartHrs" type="number" placeholder="Starting hour" />
+      <input id="EndHrs" type="number" placeholder="Ending hour" />
+      <input id="Adress" type="text" placeholder="Adress" />
+      <input id="CashTotal" type="number" placeholder="Hot. Trzba" />
+      <input id="CardTotal" type="number" placeholder="Kart. Trzba" />
+      <input id="CashBeforeMe" type="number" placeholder="Hot. was" />
+      <input id="CardBeforeMe" type="number" placeholder="Kart. was" />
+
+      <div id="SubmitShift">Calculate</div>
+
+      <div id="ShiftTotalResult"></div>
+
+      <div id="Switch">
+        <img id="TwoPerson" src="./icons/TwoPerson.png" alt="" />
+        <img id="OnePerson" src="./icons/OnePerson.png" alt="" />
+      </div>
+    </section>
+    <!-- ? Third Section -->
+
+    <section id="section3" class="AllShiftsCalc">
+      <div id="input-container">
+        <input type="text" class="input-field" id="first" placeholder="Date" />
+        <input type="text" class="input-field" placeholder="Adress" />
+        <input type="number" class="input-field" placeholder="Hours" />
+        <input type="text" class="input-field" id="last" placeholder="Tržba" />
+      </div>
+      <button id="add-button">Add a day</button>
+      <button id="finish-button">Calculate all Shifts</button>
+      <div id="AllShiftsResult"></div>
+    </section>
+
+    <script src="./scripts/AllShiftsCalc.js"></script>
+    <script src="./scripts/EndDayCalc.js"></script>
+    <script src="./scripts/ShiftFinishWriter.js"></script>
+  </body>
+</html>

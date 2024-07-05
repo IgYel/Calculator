@@ -1,0 +1,191 @@
+@import "normalize";
+@import "root";
+
+html, 
+body{
+    width: 100%;
+    background-color: var(--darkBlue);
+    position: relative;
+    height: fit-content;
+    overflow-x: hidden;
+}
+
+header{
+    width: 94%;
+    height: 15vh;
+    background-color: var(--blue);
+    color: var(--white);
+    height: fit-content;
+    padding: 1vh 3vw;
+    position: fixed;
+    ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        li{
+            width: 13vh;
+            height: 13vh;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    top: 0;
+    z-index: 5;
+}
+
+input{
+    width: 85%;
+    margin: 2vh 5vw;
+    height: fit-content;
+    font-size: 10vh;
+    padding: 2.5%;
+    border-radius: 5vh;
+    background-color: var(--white);
+    color: var(--darkBlue);
+}
+.EndDayCalc{
+    margin-top: 15vh;
+    width: 100%;
+    #MKrones{
+        margin-top: 10vh;
+    }
+    #MKrones, #MEuros, #MDollars{
+        color: var(--red);
+    }
+    #MDollars{
+        margin-bottom: 10vh;
+    }
+    #SubmitButton{
+        width: 85%;
+        margin: 2vh 5vw;
+        height: fit-content;
+        font-size: 8vh;
+        text-align: center;
+        padding: 2.5%;
+        border-radius: 5vh;
+        background-color: var(--red);
+        color: var(--white);
+        margin-top: 3vh;
+        cursor: pointer;
+    }
+    #resultOfDay{
+        display: none;
+        font-size: 7vh;
+        min-height: 10vh;
+        background-color: var(--blue);
+        height: fit-content;
+        padding: 2.5%;
+        margin: 5%;
+        border-radius: 5vh;
+        width: 85%;
+        color: var(--darkBlue);
+    }
+    height: fit-content;
+}
+
+.ShiftFinishWriter{
+    margin: 15vh 0;
+    padding: 15vh 0 20vh 0;
+    background-color: var(--blue);
+    height: fit-content;
+    #CashTotal{
+        margin-top: 10vh;
+    }
+    #CashBeforeMe, #CardBeforeMe{
+        display: none;
+    }
+    position: relative;
+    #Switch{
+        width: 15vh;
+        height: 15vh;
+        position: absolute;
+        bottom: 2vh;
+        right: 2vh;
+        img{
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+    }
+    #SubmitShift{
+        width: 85%;
+        margin: 2vh 5vw;
+        height: fit-content;
+        font-size: 8vh;
+        text-align: center;
+        padding: 2.5%;
+        border-radius: 5vh;
+        background-color: var(--red);
+        color: var(--white);
+        margin-top: 10vh;
+        cursor: pointer;
+    }
+    #ShiftTotalResult{
+        display: none;
+        font-size: 5vh;
+        height: fit-content;
+        min-height: 10vh;
+        background-color: var(--darkBlue);
+        padding: 2.5%;
+        margin: 5%;
+        border-radius: 5vh;
+        width: 85%;
+        color: var(--white);
+    }
+}
+
+.AllShiftsCalc{
+    #input-container{
+        background-color: var(--blue);
+        width: 90%;
+        margin: auto 5%;
+        border-radius: 5vw;
+        height: fit-content;
+    }
+    #add-button{
+        width: 60%;
+        margin: 2vh 20%;
+        height: fit-content;
+        font-size: 8vh;
+        text-align: center;
+        padding: 2.5%;
+        border-radius: 5vh;
+        background-color: var(--blue);
+        color: var(--white);
+        margin-top: 10vh;
+        cursor: pointer;
+    }
+    #finish-button{
+        width: 90%;
+        margin: 2vh 5%;
+        height: fit-content;
+        font-size: 8vh;
+        text-align: center;
+        padding: 2.5%;
+        border-radius: 5vh;
+        background-color: var(--red);
+        color: var(--white);
+        margin-top: 10vh;
+        cursor: pointer;
+    }
+    #AllShiftsResult{
+        display: none;
+        font-size: 5vh;
+        height: fit-content;
+        min-height: 10vh;
+        background-color: var(--blue);
+        padding: 2.5%;
+        margin: 5%;
+        border-radius: 5vh;
+        width: 85%;
+        color: var(--white);
+    }
+    #first{
+        margin-top: 5vh;
+    }
+    #last{
+        margin-bottom: 10vh;
+    }
+}
