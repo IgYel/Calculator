@@ -27,12 +27,13 @@ Submit.onclick = () => {
     // convert Euros and Dollars
 
     const Trzba = KronesResult + EurosConverted + DollarsConverted;
-    let ResultMessage1 = `Total: ${TotalKrones} Kč. Tržba v hotove: +${Trzba}, +${KronesResult}Kč, +${EurosResult}€ (${EurosConverted} v Kč), $: ${DollarsResult}.`;
+
     
     let Leave = +prompt(`You have ${TotalKrones}Kč. ${MorningKrones}Kč was at Morning. How many leave for tomorrow?`);
     let ForNik = Math.round((TotalKrones - Leave) / 100) * 100;
     const ResultMessage2 = ` 
     Pro Niki: ${ForNik}KČ, KASA na ZITRA: ${TotalKrones - ForNik}KČ. Euro a Dolary si vyber sam.`
+    let ResultMessage1 = `Total: ${TotalKrones}Kč ${TotalEuros}€ ${TotalDollars}$ | Rano: ${MorningKrones}Kč, ${MorningEuros}€, ${MorningDollars}$ | Tržba: +${KronesResult}Kč, +${EurosResult}€, $: ${DollarsResult}. = ${Trzba}KČ CELKEM V HOTOVE | Z kasy: ${(TotalKrones - ForNik) - MorningKrones}Kč |`;
     resultOfDay.textContent = ResultMessage1 + ResultMessage2;
     // Count all and give to Niki
     resultOfDay.style.display = "block";
