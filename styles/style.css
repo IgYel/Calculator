@@ -146,7 +146,7 @@ input {
 .ShiftFinishWriter #CashTotal {
   margin-top: 10vh;
 }
-.ShiftFinishWriter #CashBeforeMe, .ShiftFinishWriter #CardBeforeMe {
+.ShiftFinishWriter #MoneyBeforeMe {
   display: none;
 }
 .ShiftFinishWriter #Switch {
@@ -249,4 +249,24 @@ input {
 }
 .AllShiftsCalc #last {
   margin-bottom: 10vh;
+}
+
+.ResultText {
+  font-size: 15vh;
+  letter-spacing: -0.1rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  min-height: 10vh;
+  color: var(--white);
+}
+.ResultText:last-child {
+  color: var(--red);
+  font-weight: 600;
+  margin-top: 3rem;
+}
+.ResultText:first-child {
+  color: var(--red);
+  margin-bottom: 1rem;
+  font-weight: 550;
 }

@@ -1,6 +1,10 @@
 const Submit = document.querySelector("#SubmitButton");
 let resultOfDay = document.getElementById("resultOfDay");
 
+// !
+import { getTodayDate } from './GetDate.js';
+// !
+
 Submit.onclick = () => {
 	const TotalKrones = document.querySelector("#Krones").value;
 	const TotalEuros = document.querySelector("#Euros").value;
@@ -29,12 +33,32 @@ Submit.onclick = () => {
     const Trzba = KronesResult + EurosConverted + DollarsConverted;
 
     
-    let Leave = +prompt(`You have ${TotalKrones}Kč. ${MorningKrones}Kč was at Morning. How many leave for tomorrow?`);
-    let ForNik = Math.round((TotalKrones - Leave) / 100) * 100;
-    const ResultMessage2 = ` 
-    Pro Niki: ${ForNik}KČ, KASA na ZITRA: ${TotalKrones - ForNik}KČ. Euro a Dolary si vyber sam.`
-    let ResultMessage1 = `Total: ${TotalKrones}Kč ${TotalEuros}€ ${TotalDollars}$ | Rano: ${MorningKrones}Kč, ${MorningEuros}€, ${MorningDollars}$ | Tržba: +${KronesResult}Kč, +${EurosResult}€, $: ${DollarsResult}. = ${Trzba}KČ CELKEM V HOTOVE | Z kasy: ${(TotalKrones - ForNik) - MorningKrones}Kč |`;
-    resultOfDay.textContent = ResultMessage1 + ResultMessage2;
-    // Count all and give to Niki
+    let ForNik = Math.round((TotalKrones - MorningKrones) / 100) * 100;
+
+    let DateText = document.getElementById("Date");
+    let TotalKassaText = document.getElementById("TotalKassa");
+    let TrzbaText = document.getElementById("Trzba");
+    let MorningText = document.getElementById("Morning");
+    let TakeFromKassaText = document.getElementById("TakeFromKassa");
+    let ForTomorrowText = document.getElementById("ForTomorrow");
+    let ForNikiText = document.getElementById("ForNiki");
+
+    //? Count all and give to Niki
+    
+    DateText.textContent = getTodayDate();
+
+    TotalKassaText.textContent = `Total: ${TotalKrones}Kč | ${TotalEuros}€ | ${TotalDollars}$`; 
+
+    TrzbaText.textContent = `Tržba: +${KronesResult}Kč | +${EurosResult}€ | $: ${DollarsResult}. (${Trzba} Kč Celkem) `;
+    
+    MorningText.textContent = `Rano: ${MorningKrones}Kč | ${MorningEuros}€ | ${MorningDollars}$`;
+
+    TakeFromKassaText.textContent = `Z kasy: ${(TotalKrones - ForNik) - MorningKrones}Kč (- vzal | + dal)`;
+    
+    ForTomorrowText.textContent = `KASA na ZITRA: ${TotalKrones - ForNik}Kč.`;
+
+    ForNikiText.textContent = `Pro Niki: ${ForNik}Kč`;
+
+
     resultOfDay.style.display = "block";
 };

@@ -33,7 +33,16 @@
 
       <div id="SubmitButton">Calculate</div>
 
-      <div id="resultOfDay"></div>
+      <div id="resultOfDay">
+        <div class="ResultText" id="Date"></div>
+        <div class="ResultText" id="TotalKassa"></div>
+        <div class="ResultText" id="Trzba"></div>
+        <div class="ResultText" id="Morning"></div>
+        <div class="ResultText" id="TakeFromKassa"></div>
+        <div class="ResultText" id="ForTomorrow"></div>
+        <div class="ResultText" id="ForNiki"></div>
+        <div class="ResultText">Hezky večer!</div>
+      </div>
     </section>
 
     <!-- ! Second Section -->
@@ -42,14 +51,19 @@
       <input id="StartHrs" type="number" placeholder="Starting hour" />
       <input id="EndHrs" type="number" placeholder="Ending hour" />
       <input id="Adress" type="text" placeholder="Adress" />
-      <input id="CashTotal" type="number" placeholder="Hot. Trzba" />
-      <input id="CardTotal" type="number" placeholder="Kart. Trzba" />
-      <input id="CashBeforeMe" type="number" placeholder="Hot. was" />
-      <input id="CardBeforeMe" type="number" placeholder="Kart. was" />
+      <input id="MoneyTotal" type="number" placeholder="Money Total" />
+      <input id="MoneyBeforeMe" type="number" placeholder="Money was" />
 
       <div id="SubmitShift">Calculate</div>
 
-      <div id="ShiftTotalResult"></div>
+      <div id="ShiftTotalResult">
+        <div id="DayDate" class="ResultText"></div>
+        <div id="Shift" class="ResultText"></div>
+        <div id="Hours" class="ResultText"></div>
+        <div id="Money" class="ResultText"></div>
+        <div id="spacer" class="ResultText"></div>
+        <div class="ResultText">Hezky večer!</div>
+      </div>
 
       <div id="Switch">
         <img id="TwoPerson" src="./icons/TwoPerson.png" alt="" />
@@ -70,8 +84,8 @@
       <div id="AllShiftsResult"></div>
     </section>
 
-    <script src="./scripts/AllShiftsCalc.js"></script>
-    <script src="./scripts/EndDayCalc.js"></script>
-    <script src="./scripts/ShiftFinishWriter.js"></script>
+    <script type="module" src="./scripts/AllShiftsCalc.js"></script>
+    <script type="module" src="./scripts/ShiftFinishWriter.js"></script>
+    <script type="module" src="./scripts/EndDayCalc.js"></script>
   </body>
 </html>
