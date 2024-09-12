@@ -183,6 +183,20 @@ input {
   cursor: pointer;
 }
 
+#clearLocalStorage {
+  width: 90%;
+  margin: 25vh 5% 2% 5%;
+  height: -moz-fit-content;
+  height: fit-content;
+  font-size: 8vh;
+  text-align: center;
+  padding: 2.5%;
+  border-radius: 5vh;
+  background-color: var(--red);
+  color: var(--white);
+  cursor: pointer;
+}
+
 .Hidden {
   display: none;
 }/*# sourceMappingURL=style.css.map */

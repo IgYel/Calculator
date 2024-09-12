@@ -269,3 +269,8 @@ Summary: ${(totalHours * 140) + totalBonus}KČ.
     console.log(finalMessage);
     console.log(totalHours);
 }
+
+const clearLocalStorage = document.querySelector('#clearLocalStorage');
+clearLocalStorage.onclick = () =>{
+    localStorage.clear();
+}
