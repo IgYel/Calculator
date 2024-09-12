@@ -182,6 +182,7 @@ finishButton.onclick = () => {
         finalMessage = "no shifts in this month yet";
     } else {
         let totalHours = 0;
+        let totalBonus = 0;
         let CurrentDay = "";
         let bonus = 0;
 
@@ -247,13 +248,17 @@ Bonus: ${bonus}.
 `;
 
             totalHours += hrs;
+            totalBonus += bonus;
             finalMessage += CurrentDay;
         }
 
         finalMessage += `
-Total hours: ${totalHours}
-        `;
-    }
+Total hours: ${totalHours}h, (${totalHours * 140}kč).
+bonus: ${totalBonus}kč.
+
+Summary: ${(totalHours * 140) + totalBonus}KČ.
+`;
+}
 
     // Копируем результат в буфер обмена
     navigator.clipboard.writeText(finalMessage).then(() => {
