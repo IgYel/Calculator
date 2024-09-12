@@ -172,103 +172,104 @@ Hezky večer!
 const finishButton = document.querySelector('#finishButton');
 
 finishButton.onclick = () => {
-    const AllShifts = JSON.parse(localStorage.getItem("shiftsOfMonth"));
+    // Проверяем, есть ли данные в localStorage и если нет, то создаем пустой массив
+    const AllShifts = JSON.parse(localStorage.getItem("shiftsOfMonth")) || [];
+
     let finalMessage = "";
-    
-    let totalHours = 0;
-    let totalBonus = 0;
 
-    let CurrentDay = "";
-    let bonus = 0;
+    if (AllShifts.length === 0) {
+        // Если нет смен в текущем месяце, создаем сообщение об отсутствии данных
+        finalMessage = "no shifts in this month yet";
+    } else {
+        let totalHours = 0;
+        let CurrentDay = "";
+        let bonus = 0;
 
-    for (let i = 0; i < AllShifts.length; i++) {
-        // Преобразуем значение Trzba в число для корректных расчетов
-        let Trzba = Number(AllShifts[i].money);
-        let hrs = Number(AllShifts[i].hrs);
+        for (let i = 0; i < AllShifts.length; i++) {
+            // Преобразуем значение Trzba и hrs в число для корректных расчетов
+            let Trzba = parseFloat(AllShifts[i].money) || 0;
+            let hrs = parseFloat(AllShifts[i].hrs) || 0;
 
-        if (AllShifts[i].shop === '2smena') {
-            bonus = 0;
-        } else if (AllShifts[i].shop === 'Ha20') {
-            if (hrs >= 11.5) {
-                if (Trzba >= 12000) {
-                    bonus = Trzba * 0.025;
-                } 
-                if (Trzba >= 15000) {
+            if (AllShifts[i].shop === '2smena') {
+                bonus = 0;
+            } else if (AllShifts[i].shop === 'Ha20') {
+                if (hrs >= 11.5) {
+                    if (Trzba >= 12000) {
+                        bonus = Trzba * 0.025;
+                    }
+                    if (Trzba >= 15000) {
+                        bonus = Trzba * 0.03;
+                    }
+                    if (Trzba >= 20000) {
+                        bonus = Trzba * 0.04;
+                    }
+                    if (Trzba >= 25000) {
+                        bonus = Trzba * 0.045;
+                    }
+                    if (Trzba >= 32000) {
+                        bonus = Trzba * 0.05;
+                    }
+                    if (Trzba >= 40000) {
+                        bonus = Trzba * 0.055;
+                    }
+                } else {
+                    if (Trzba >= 6000) {
+                        bonus = Trzba * 0.025;
+                    }
+                }
+            } else if (AllShifts[i].shop === 'Ha18') {
+                if (Trzba >= 9000) {
                     bonus = Trzba * 0.03;
                 }
-                if (Trzba >= 20000) {
-                    bonus = Trzba * 0.04;
-                }
-                if (Trzba >= 25000) {
+                if (Trzba >= 14000) {
                     bonus = Trzba * 0.045;
                 }
-                if (Trzba >= 32000) {
+                if (Trzba >= 22000) {
                     bonus = Trzba * 0.05;
                 }
-                if (Trzba >= 40000) {
+                if (Trzba >= 30000) {
                     bonus = Trzba * 0.055;
                 }
-            } else {
-                if (Trzba >= 6000) {
-                    bonus = Trzba * 0.025;
+            } else if (AllShifts[i].shop === 'MAJ') {
+                if (Trzba >= 13000) {
+                    bonus = Trzba * 0.01;
                 }
-            } //* for not full
-        } //* Ha20 Bonus
+            }
 
-        else if (AllShifts[i].shop === 'Ha18') {
-            if (Trzba >= 9000) {
-                bonus = Trzba * 0.03;
-            } 
-            if (Trzba >= 14000) {
-                bonus = Trzba * 0.045;
-            }
-            if (Trzba >= 22000) {
-                bonus = Trzba * 0.05;
-            }
-            if (Trzba >= 30000) {
-                bonus = Trzba * 0.055;
-            }
-        } //* Ha18 Bonus
-
-        else if (AllShifts[i].shop === 'MAJ') {
-            if (Trzba >= 13000) {
-                bonus = Trzba * 0.01;
-            }
-        } //* MAJ Bonus (just in case..)
-        
-        // Формируем информацию о текущем дне
-        CurrentDay = 
-`
+            // Формируем информацию о текущем дне
+            CurrentDay = `
 ${AllShifts[i].date}:
 ${AllShifts[i].shop},
 hours: ${hrs},
 trzba: ${Trzba},
 
 Bonus: ${bonus}.
-
 `;
 
-        totalHours += hrs;
-        totalBonus += bonus;
-        finalMessage += CurrentDay;
+            totalHours += hrs;
+            finalMessage += CurrentDay;
+        }
+
+        finalMessage += `
+Total hours: ${totalHours}
+        `;
     }
 
-    finalMessage +=
-`
-total hours: ${totalHours}h. (${totalHours * 140}kč)
-
-bonuses: ${totalBonus}kč.
-
-Summary: ${(totalHours * 140) + totalBonus}KČ.
-
-`
     // Копируем результат в буфер обмена
     navigator.clipboard.writeText(finalMessage).then(() => {
+        console.log("Result copied to clipboard");
+    }).catch(err => {
+        // Если не удалось скопировать данные, выводим сообщение "no shifts in this month yet"
+        const fallbackMessage = "no shifts in this month yet";
+        navigator.clipboard.writeText(fallbackMessage).then(() => {
+            console.log("Fallback message copied to clipboard");
+        }).catch(err => {
+            console.error("Failed to copy fallback message: ", err);
+        });
     });
 
     console.log(finalMessage);
-    console.log(totalHours);
-}
+};
 
 const clearLocalStorage = document.querySelector('#clearLocalStorage');
 clearLocalStorage.onclick = () =>{
