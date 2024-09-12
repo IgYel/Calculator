@@ -256,7 +256,7 @@ Bonus: ${bonus}.
 Total hours: ${totalHours}h, (${totalHours * 140}kč).
 bonus: ${totalBonus}kč.
 
-Summary: ${(totalHours * 140) + totalBonus}KČ.
+Summary: ${Math.round((totalHours * 140) + totalBonus)}KČ.
 `;
 }
 
