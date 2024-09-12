@@ -184,8 +184,8 @@ input {
 }
 
 #clearLocalStorage {
-  width: 90%;
-  margin: 25vh 5% 2% 5%;
+  width: 85%;
+  margin: 25vh 7.5% 2% 7.5%;
   height: -moz-fit-content;
   height: fit-content;
   font-size: 8vh;
