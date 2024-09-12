@@ -145,20 +145,20 @@ input{
         margin-top: 10vh;
         cursor: pointer;
     }
+    #clearLocalStorage{
+        width: 85%;
+        margin: 25vh 7.5% 2% 7.5%;
+        height: fit-content;
+        font-size: 8vh;
+        text-align: center;
+        padding: 2.5%;
+        border-radius: 5vh;
+        background-color: var(--red);
+        color: var(--white);
+        cursor: pointer;
+    }
 }
 
-#clearLocalStorage{
-    width: 85%;
-    margin: 25vh 7.5% 2% 7.5%;
-    height: fit-content;
-    font-size: 8vh;
-    text-align: center;
-    padding: 2.5%;
-    border-radius: 5vh;
-    background-color: var(--red);
-    color: var(--white);
-    cursor: pointer;
-}
 
 .Hidden{
     display: none;

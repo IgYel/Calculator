@@ -182,8 +182,7 @@ input {
   margin-top: 10vh;
   cursor: pointer;
 }
-
-#clearLocalStorage {
+.AllShiftsCalc #clearLocalStorage {
   width: 85%;
   margin: 25vh 7.5% 2% 7.5%;
   height: -moz-fit-content;
