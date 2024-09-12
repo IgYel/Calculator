@@ -4,88 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./styles/style.min.css" />
+    <link rel="stylesheet" href="./sass/style.css" />
     <link rel="icon" href="./icons/finalCalcIcon.png" type="image/x-icon" />
   </head>
   <body>
-    <header class="header">
-      <ul class="buttonList">
-        <li id="EndDayCalc_Button">
-          <a href=".#section1"><img src="./icons/CalcIcon.png" alt="" /></a>
-        </li>
-        <li id="ShiftFinishWriter_Button">
-          <a href="#section2"><img src="./icons/ShiftIcon.png" alt="" /></a>
-        </li>
-        <li id="AllShiftsCalc_Button">
-          <a href="#section3"><img src="./icons/finalCalcIcon.png" alt="" /></a>
-        </li>
-      </ul>
-    </header>
-
-    <!-- ? First Section -->
-    <section id="section1" class="EndDayCalc">
-      <input id="Krones" type="number" placeholder="Kč Total" />
-      <input id="Euros" type="number" placeholder="€ Total" />
-      <input id="Dollars" type="number" placeholder="$ Total" />
-      <input id="MKrones" type="number" placeholder="Kč was" />
-      <input id="MEuros" type="number" placeholder="€ was" />
-      <input id="MDollars" type="number" placeholder="$ was" />
-
-      <div id="SubmitButton">Calculate</div>
-
-      <div id="resultOfDay">
-        <div class="ResultText" id="Date"></div>
-        <div class="ResultText" id="TotalKassa"></div>
-        <div class="ResultText" id="Trzba"></div>
-        <div class="ResultText" id="Morning"></div>
-        <div class="ResultText" id="TakeFromKassa"></div>
-        <div class="ResultText" id="ForTomorrow"></div>
-        <div class="ResultText" id="ForNiki"></div>
-        <div class="ResultText">Hezky večer!</div>
-      </div>
-    </section>
-
-    <!-- ! Second Section -->
 
     <section id="section2" class="ShiftFinishWriter">
-      <input id="StartHrs" type="number" placeholder="Starting hour" />
-      <input id="EndHrs" type="number" placeholder="Ending hour" />
-      <input id="Adress" type="text" placeholder="Adress" />
-      <input id="MoneyTotal" type="number" placeholder="Money Total" />
-      <input id="MoneyBeforeMe" type="number" placeholder="Money was" />
-
-      <div id="SubmitShift">Calculate</div>
-
-      <div id="ShiftTotalResult">
-        <div id="DayDate" class="ResultText"></div>
-        <div id="Shift" class="ResultText"></div>
-        <div id="Hours" class="ResultText"></div>
-        <div id="Money" class="ResultText"></div>
-        <div id="spacer" class="ResultText"></div>
-        <div class="ResultText">Hezky večer!</div>
+      <div class="switch">
+        <div id="NormalDay">custom</div>
+        <div id="CustomDay">normal</div>
       </div>
 
-      <div id="Switch">
-        <img id="TwoPerson" src="./icons/TwoPerson.png" alt="" />
-        <img id="OnePerson" src="./icons/OnePerson.png" alt="" />
+      <div class="CustomDayInfo">
+        <input id="StartHrs" type="number" placeholder="Start H" />
+        <input id="EndHrs" type="number" placeholder="End H" />
+        <input id="Adress" type="text" placeholder="Shop" />
+        <input id="MoneyTotal" type="number" placeholder="Trzba" />
       </div>
+
+      <div class="NormalDayInfo">
+        <input id="normalDayShop" type="text" placeholder="Shop">
+        <input id="normalDayMoney" type="number" placeholder="Trzba">
+      </div>
+      
+      <div id="SubmitShift">Save shift</div>
     </section>
-    <!-- ? Third Section -->
 
     <section id="section3" class="AllShiftsCalc">
-      <div id="input-container">
-        <input type="text" class="input-field" id="first" placeholder="Date" />
-        <input type="text" class="input-field" placeholder="Adress" />
-        <input type="number" class="input-field" placeholder="Hours" />
-        <input type="text" class="input-field" id="last" placeholder="Tržba" />
-      </div>
-      <button id="add-button">Add a day</button>
-      <button id="finish-button">Calculate all Shifts</button>
-      <div id="AllShiftsResult"></div>
+      <button id="finishButton">Calculate all Shifts</button>
     </section>
 
-    <script type="module" src="./scripts/AllShiftsCalc.js"></script>
-    <script type="module" src="./scripts/ShiftFinishWriter.js"></script>
-    <script type="module" src="./scripts/EndDayCalc.js"></script>
+    <script src="./scripts/script.js"></script>
   </body>
 </html>

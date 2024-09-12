@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  -webkit-transition: ease-in-out 0.5s;
   transition: ease-in-out 0.5s;
 }
 
@@ -35,50 +34,34 @@ body {
   width: 100%;
   background-color: var(--darkBlue);
   position: relative;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   overflow-x: hidden;
 }
 
-header {
-  width: 94%;
-  height: 15vh;
-  background-color: var(--blue);
+.switch {
+  height: 25vw;
+}
+.switch div {
+  width: 90%;
+  margin-left: 5%;
+  font-size: 20vw;
+  text-align: center;
+  align-content: center;
+  position: absolute;
+  background-color: var(--red);
   color: var(--white);
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  padding: 1vh 3vw;
-  position: fixed;
-  top: 0;
-  z-index: 5;
+  border-radius: 5vh;
+  transition: 0.2s ease;
 }
-header ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-header ul li {
-  width: 13vh;
-  height: 13vh;
-}
-header ul li img {
-  width: 100%;
-  height: 100%;
+.switch div:hover {
+  background-color: var(--darkBlue);
+  transition: 0.2s ease;
 }
 
 input {
   width: 85%;
   margin: 2vh 5vw;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   font-size: 10vh;
@@ -91,7 +74,6 @@ input {
 .EndDayCalc {
   margin-top: 15vh;
   width: 100%;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
 }
@@ -107,7 +89,6 @@ input {
 .EndDayCalc #SubmitButton {
   width: 85%;
   margin: 2vh 5vw;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   font-size: 8vh;
@@ -124,7 +105,6 @@ input {
   font-size: 7vh;
   min-height: 10vh;
   background-color: var(--blue);
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   padding: 2.5%;
@@ -138,7 +118,6 @@ input {
   margin: 15vh 0;
   padding: 15vh 0 20vh 0;
   background-color: var(--blue);
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   position: relative;
@@ -164,7 +143,6 @@ input {
 .ShiftFinishWriter #SubmitShift {
   width: 85%;
   margin: 2vh 5vw;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   font-size: 8vh;
@@ -179,7 +157,6 @@ input {
 .ShiftFinishWriter #ShiftTotalResult {
   display: none;
   font-size: 5vh;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   min-height: 10vh;
@@ -191,34 +168,9 @@ input {
   color: var(--white);
 }
 
-.AllShiftsCalc #input-container {
-  background-color: var(--blue);
-  width: 90%;
-  margin: auto 5%;
-  border-radius: 5vw;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-}
-.AllShiftsCalc #add-button {
-  width: 60%;
-  margin: 2vh 20%;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  font-size: 8vh;
-  text-align: center;
-  padding: 2.5%;
-  border-radius: 5vh;
-  background-color: var(--blue);
-  color: var(--white);
-  margin-top: 10vh;
-  cursor: pointer;
-}
-.AllShiftsCalc #finish-button {
+.AllShiftsCalc #finishButton {
   width: 90%;
   margin: 2vh 5%;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   font-size: 8vh;
@@ -230,43 +182,7 @@ input {
   margin-top: 10vh;
   cursor: pointer;
 }
-.AllShiftsCalc #AllShiftsResult {
-  display: none;
-  font-size: 5vh;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  min-height: 10vh;
-  background-color: var(--blue);
-  padding: 2.5%;
-  margin: 5%;
-  border-radius: 5vh;
-  width: 85%;
-  color: var(--white);
-}
-.AllShiftsCalc #first {
-  margin-top: 5vh;
-}
-.AllShiftsCalc #last {
-  margin-bottom: 10vh;
-}
 
-.ResultText {
-  font-size: 15vh;
-  letter-spacing: -0.1rem;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  min-height: 10vh;
-  color: var(--white);
-}
-.ResultText:last-child {
-  color: var(--red);
-  font-weight: 600;
-  margin-top: 3rem;
-}
-.ResultText:first-child {
-  color: var(--red);
-  margin-bottom: 1rem;
-  font-weight: 550;
-}
+.Hidden {
+  display: none;
+}/*# sourceMappingURL=style.css.map */
