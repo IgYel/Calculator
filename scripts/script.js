@@ -272,5 +272,5 @@ Summary: ${(totalHours * 140) + totalBonus}KČ.
 
 const clearLocalStorage = document.querySelector('#clearLocalStorage');
 clearLocalStorage.onclick = () =>{
-    localStorage.setItem("shiftsOfMonth", `ou didnt work yet in that moth`);
+    localStorage.setItem("shiftsOfMonth", 0);
 }
