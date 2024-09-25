@@ -67,8 +67,8 @@ function normalMode() {
         let Trzba = normalDayMoney.value;
         let hrs = 0;
 
-        if (Shop === "H20" || Shop === "H-18") {
-            hrs = 11.5;
+        if (Shop === "Ha20" || Shop === "Ha18") {
+            hrs = 10.5;
         } else if (Shop === "2smena" || Shop === "2 smena") {
             hrs = 8;
         } else {
@@ -79,20 +79,19 @@ function normalMode() {
         let resultMessage = "";
 
         if (Shop !== "2smena") {
-            resultMessage = `
-${todayDate}:
+            resultMessage = 
+`${todayDate}:
 hodiny: ${hrs},
 Shop: ${Shop},
-Tržba: ${Trzba}.
 ____________
-Hezky večer!
-            `;
+Tržba: ${Trzba}.
+Hezky večer!`;
         } else {
             resultMessage = `
 ${todayDate}:
 hodiny: ${hrs},
-Shop: ${Shop},
 ____________
+Shop: ${Shop},
 Hezky večer!
             `;
         }
@@ -133,17 +132,21 @@ function CustomMode() {
         let Trzba = MoneyTotal.value;
         let Start = parseFloat(StartHrs.value);
         let End = parseFloat(EndHrs.value);
+
+        if (End < Start){
+            End += 12;
+        }
+
         let hrs = End - Start;
 
         // Формирование сообщения
-        let resultMessage = `
-${todayDate}:
+        let resultMessage = 
+`${todayDate}:
 hodiny: ${hrs}, (${Start} - ${End}),
 Shop: ${Shop},
-Tržba: ${Trzba},
 ____________
-Hezky večer!
-        `;
+Tržba: ${Trzba},
+Hezky večer!`;
 
         // Добавляем смену в массив shiftsOfMonth
         shiftsOfMonth.push({
@@ -194,7 +197,7 @@ finishButton.onclick = () => {
             if (AllShifts[i].shop === '2smena') {
                 bonus = 0;
             } else if (AllShifts[i].shop === 'Ha20') {
-                if (hrs >= 11.5) {
+                if (hrs >= 10) {
                     if (Trzba >= 12000) {
                         bonus = Trzba * 0.025;
                     }
@@ -278,5 +281,9 @@ Summary: ${Math.round((totalHours * 140) + totalBonus)}KČ.
 
 const clearLocalStorage = document.querySelector('#clearLocalStorage');
 clearLocalStorage.onclick = () =>{
-    localStorage.removeItem('shiftsOfMonth');
+    let conf = confirm("Do you want to clear all shifts?");
+
+    if(conf){
+        localStorage.removeItem('shiftsOfMonth');
+    }
 }
