@@ -132,17 +132,32 @@ function CustomMode() {
         let Trzba = MoneyTotal.value;
         let Start = parseFloat(StartHrs.value);
         let End = parseFloat(EndHrs.value);
+        let StartHourConverted = ''
+        let EndHourConverted = '';
+
+        if(Start == 9.5){
+            StartHourConverted = '9:30';
+        } else if(Start == 8.75){
+            StartHourConverted = '8:45';
+        } else{
+            StartHourConverted = Start;
+        }
+
+        if(End == 21.25){
+            EndHourConverted = '21:15';
+        } else{
+            EndHourConverted = End;
+        }
 
         if (End < Start){
             End += 12;
         }
-
         let hrs = End - Start;
 
         // Формирование сообщения
         let resultMessage = 
 `${todayDate}:
-hodiny: ${hrs}, (${Start} - ${End}),
+hodiny: ${hrs}, (${StartHourConverted} - ${EndHourConverted}),
 Shop: ${Shop},
 ____________
 Tržba: ${Trzba},
@@ -193,6 +208,7 @@ finishButton.onclick = () => {
             // Преобразуем значение Trzba и hrs в число для корректных расчетов
             let Trzba = parseFloat(AllShifts[i].money) || 0;
             let hrs = parseFloat(AllShifts[i].hrs) || 0;
+            bonus = 0;
 
             if (AllShifts[i].shop === '2smena') {
                 bonus = 0;
@@ -216,7 +232,7 @@ finishButton.onclick = () => {
                     if (Trzba >= 40000) {
                         bonus = Trzba * 0.055;
                     }
-                } else {
+                } else if (hrs < 10){
                     if (Trzba >= 6000) {
                         bonus = Trzba * 0.025;
                     }
@@ -241,19 +257,45 @@ finishButton.onclick = () => {
             }
 
             // Формируем информацию о текущем дне
-            CurrentDay = `
-${AllShifts[i].date}:
+if(Trzba === 0){
+
+CurrentDay =
+`${AllShifts[i].date}:
+${AllShifts[i].shop},
+hours: ${hrs},
+
+`;
+
+} else {
+
+if(bonus == 0){
+
+CurrentDay =
+`${AllShifts[i].date}:
 ${AllShifts[i].shop},
 hours: ${hrs},
 trzba: ${Trzba},
 
-Bonus: ${bonus}.
 `;
 
-            totalHours += hrs;
-            totalBonus += bonus;
-            finalMessage += CurrentDay;
-        }
+} else{
+CurrentDay =
+`${AllShifts[i].date}:
+${AllShifts[i].shop},
+hours: ${hrs},
+trzba: ${Trzba},
+________________
+Bonus: ${bonus}.
+
+`;
+
+}
+
+}
+    totalHours += hrs;
+    totalBonus += bonus;
+    finalMessage += CurrentDay;
+}
 
         finalMessage += `
 Total hours: ${totalHours}h, (${totalHours * 140}kč).
@@ -287,3 +329,86 @@ clearLocalStorage.onclick = () =>{
         localStorage.removeItem('shiftsOfMonth');
     }
 }
+
+const currentmonthfix = [
+    {
+        date: "9.6",
+        hrs: 8,
+        money: 0,
+        shop: "2smena",
+    },
+    {
+        date: "9.7",
+        hrs: 8,
+        money: 0,
+        shop: "2smena",
+    },
+    {
+        date: "9.9",
+        hrs: 12.5,
+        money: 7564,
+        shop: "MAJ",
+    },
+    {
+        date: "9.10",
+        hrs: 12.5,
+        money: 6560,
+        shop: "MAJ",
+    },
+    {
+        date: "9.13",
+        hrs: 8,
+        money: 0,
+        shop: "2smena",
+    },
+    {
+        date: "9.14",
+        hrs: 8,
+        money: 0,
+        shop: "2smena",
+    },
+    {
+        date: "9.15",
+        hrs: 12.5,
+        money: 7634,
+        shop: "MAJ",
+    },
+    {
+        date: "9.16",
+        hrs: 12.5,
+        money: 5973,
+        shop: "MAJ",
+    },
+    {
+        date: "9.20",
+        hrs: 11.5,
+        money: 6772,
+        shop: "Ha18",
+    },
+    {
+        date: "9.21",
+        hrs: 8,
+        money: 0,
+        shop: "2smena",
+    },
+    {
+        date: "9.23",
+        hrs: 11.5,
+        money: 19072,
+        shop: "Ha20",
+    },
+    {
+        date: "9.24",
+        hrs: 11.5,
+        money: 10871,
+        shop: "Ha20",
+    },
+    {
+        date: "9.25",
+        hrs: 6,
+        money: 7761,
+        shop: "Ha20",
+    },
+]
+
+localStorage.setItem("shiftsOfMonth", JSON.stringify(currentmonthfix));
