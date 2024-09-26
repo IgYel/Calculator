@@ -213,7 +213,7 @@ finishButton.onclick = () => {
             if (AllShifts[i].shop === '2smena') {
                 bonus = 0;
             } else if (AllShifts[i].shop === 'Ha20') {
-                if (hrs >= 10) {
+                if (hrs >= 8.5) {
                     if (Trzba >= 12000) {
                         bonus = Trzba * 0.025;
                     }
@@ -238,21 +238,26 @@ finishButton.onclick = () => {
                     }
                 }
             } else if (AllShifts[i].shop === 'Ha18') {
-                if (Trzba >= 9000) {
-                    bonus = Trzba * 0.03;
-                }
-                if (Trzba >= 14000) {
-                    bonus = Trzba * 0.045;
-                }
-                if (Trzba >= 22000) {
-                    bonus = Trzba * 0.05;
-                }
-                if (Trzba >= 30000) {
-                    bonus = Trzba * 0.055;
+                if(hrs >= 8.5){
+
+                    if (Trzba >= 9000) {
+                        bonus = Trzba * 0.03;
+                    }
+                    if (Trzba >= 14000) {
+                        bonus = Trzba * 0.045;
+                    }
+                    if (Trzba >= 22000) {
+                        bonus = Trzba * 0.05;
+                    }
+                    if (Trzba >= 30000) {
+                        bonus = Trzba * 0.055;
+                    }
                 }
             } else if (AllShifts[i].shop === 'MAJ') {
-                if (Trzba >= 13000) {
-                    bonus = Trzba * 0.01;
+                if(hrs >= 9){
+                    if (Trzba >= 13000) {
+                        bonus = Trzba * 0.01;
+                    }
                 }
             }
 
@@ -328,4 +333,70 @@ clearLocalStorage.onclick = () =>{
     if(conf){
         localStorage.removeItem('shiftsOfMonth');
     }
+}
+
+//* Change day function
+
+const changeShiftButton = document.querySelector('#changeShiftButton');
+
+changeShiftButton.innerHTML = "";
+
+for(let i = 0; i < shiftsOfMonth.length; i++){
+    const option = document.createElement("option");
+    option.value = shiftsOfMonth[i].date;
+    option.textContent = shiftsOfMonth[i].date;
+
+    changeShiftButton.appendChild(option);
+    
+    //* choose
+}
+
+const inputNewDate = document.querySelector('#inputNewDate');
+const inputNewShop = document.querySelector('#inputNewShop');
+const inputNewHrs = document.querySelector('#inputNewHrs');
+inputNewDate.value = "";
+inputNewShop.value = "";
+inputNewHrs.value = "";
+
+let oldDate = "";
+let changedDay = {};
+
+changeShiftButton.onclick = () => {
+    console.log(shiftsOfMonth);
+    for (let i = 0; i < shiftsOfMonth.length; i++) {
+        if (shiftsOfMonth[i].date == changeShiftButton.value) {
+            inputNewDate.value = shiftsOfMonth[i].date;
+            inputNewShop.value = shiftsOfMonth[i].shop;
+            inputNewHrs.value = shiftsOfMonth[i].hrs;
+            changedDay = shiftsOfMonth[i];
+
+            oldDate = shiftsOfMonth[i].date;
+        }
+    }
+};
+
+//*Save changes
+
+const saveChangedShift = document.querySelector('#saveChangedShift');
+
+
+saveChangedShift.onclick = () =>{
+    changedDay.date = inputNewDate.value;
+    changedDay.shop = inputNewShop.value;
+    changedDay.hrs = Number(inputNewHrs.value);
+
+    inputNewDate.value = "";
+    inputNewShop.value = "";
+    inputNewHrs.value = "";
+    console.log(oldDate);
+
+    for(let i = 0; i < shiftsOfMonth.length; i++){
+        if(shiftsOfMonth[i].date == oldDate){
+            shiftsOfMonth[i].date = changedDay.date;
+            shiftsOfMonth[i].shop = changedDay.shop;
+            shiftsOfMonth[i].hrs = changedDay.hrs;
+
+        }
+    }
+    saveShiftsToLocalStorage();
 }

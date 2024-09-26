@@ -163,3 +163,47 @@ input{
 .Hidden{
     display: none;
 }
+
+.changeShift{
+    position: relative;
+    height: fit-content;
+    width: 100vw;
+    background-color: var(--blue);
+    padding-bottom: 5vh;
+    #changeShiftButton{
+        width: 80%;
+        margin: 5% 10%;
+        background-color: var(--red);
+        height: 35%;
+        text-align: center;
+        border: none;
+        color: var(--white);
+        border-radius: 100vh;
+        font-size: 5vw;
+        cursor: pointer;
+        option{
+            cursor: pointer;
+            font-size: 2vw;
+            background-color: var(--darkBlue);
+            border: 0.3vh solid;
+        }
+    }
+    .inputNewValue{
+        background-color: var(--darkBlue);
+        border-radius: 4vh;
+        color: var(--white);
+    }
+    #saveChangedShift{
+        margin: 5vh 10vw;
+        background-color: var(--green);
+        color: var(--white);
+
+        width: 80vw;
+        height: 20vh; 
+        border-radius: 5vh;
+        text-align: center;
+        align-content: center;
+        font-size: 10vh;
+        cursor: pointer;
+    }
+}
