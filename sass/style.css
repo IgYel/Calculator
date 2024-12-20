@@ -60,7 +60,11 @@ body {
   transition: 0.2s ease;
 }
 
-input {
+#normalDayMoney {
+  opacity: 0;
+}
+
+input, #normalDayShop {
   width: 85%;
   margin: 2vh 5vw;
   height: -moz-fit-content;
@@ -70,6 +74,12 @@ input {
   border-radius: 5vh;
   background-color: var(--white);
   color: var(--darkBlue);
+}
+
+#normalDayShop {
+  width: 90%;
+  text-align: center;
+  font-size: 10vh;
 }
 
 .EndDayCalc {
@@ -150,7 +160,7 @@ input {
   text-align: center;
   padding: 2.5%;
   border-radius: 5vh;
-  background-color: var(--red);
+  background-color: var(--green);
   color: var(--white);
   margin-top: 10vh;
   cursor: pointer;

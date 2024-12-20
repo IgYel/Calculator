@@ -1,3 +1,7 @@
+//! COMMON INFO
+const salary = 170;
+
+
 const NormalDay = document.querySelector('#NormalDay');
 const CustomDay = document.querySelector('#CustomDay');
 
@@ -55,6 +59,27 @@ function clearForm (){
     normalDayMoney.value = "";
 }
 
+//! select shop
+document.addEventListener("DOMContentLoaded", () => {
+    const normalDayShop = document.getElementById("normalDayShop");
+    const normalDayMoney = document.querySelector('#normalDayMoney');
+
+    if (normalDayShop) {
+        normalDayShop.addEventListener("change", () => {
+            if(normalDayShop.value == "2smena"){
+                normalDayMoney.style.opacity = '0';
+            } else{
+                normalDayMoney.style.opacity = '1';
+            }
+        });
+    }
+});
+
+const daysOfWeek = ["sun", "mon", "tue", "wed", "thu", "fr", "sat"];
+
+const todayWeek = new Date(); // Получаем текущую дату
+const dayOfWeek = daysOfWeek[todayWeek.getDay()]; // Получаем номер дня недели и используем его для извлечения из массива
+
 function normalMode() {
     CustomDayInfo.classList.add('Hidden');
     NormalDayInfo.classList.remove('Hidden');
@@ -70,7 +95,9 @@ function normalMode() {
         if (Shop === "Ha20" || Shop === "Ha18") {
             hrs = 10.5;
         } else if (Shop === "2smena" || Shop === "2 smena") {
-            hrs = 8;
+            if(dayOfWeek !== 'sat') hrs = 9;
+            else if(dayOfWeek !== 'sun') hrs = 9;
+            else hrs = 8;
         } else {
             hrs = 12.5;
         }
@@ -303,10 +330,10 @@ Bonus: ${bonus}.
 }
 
         finalMessage += `
-Total hours: ${totalHours}h, (${totalHours * 140}kč).
+Total hours: ${totalHours}h, (${totalHours * salary}kč).
 bonus: ${totalBonus}kč.
 
-Summary: ${Math.round((totalHours * 140) + totalBonus)}KČ.
+Summary: ${Math.round((totalHours * salary) + totalBonus)}KČ.
 `;
 }
 
@@ -333,6 +360,7 @@ clearLocalStorage.onclick = () =>{
     if(conf){
         localStorage.removeItem('shiftsOfMonth');
     }
+    location.reload();
 }
 
 //* Change day function
@@ -399,4 +427,5 @@ saveChangedShift.onclick = () =>{
         }
     }
     saveShiftsToLocalStorage();
+    location.reload();
 }
