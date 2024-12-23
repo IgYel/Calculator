@@ -1,7 +1,6 @@
 //! COMMON INFO
 const salary = 170;
 
-
 const NormalDay = document.querySelector('#NormalDay');
 const CustomDay = document.querySelector('#CustomDay');
 
@@ -79,7 +78,8 @@ const daysOfWeek = ["sun", "mon", "tue", "wed", "thu", "fr", "sat"];
 
 const todayWeek = new Date(); // Получаем текущую дату
 const dayOfWeek = daysOfWeek[todayWeek.getDay()]; // Получаем номер дня недели и используем его для извлечения из массива
-
+console.log(dayOfWeek);
+ 
 function normalMode() {
     CustomDayInfo.classList.add('Hidden');
     NormalDayInfo.classList.remove('Hidden');
@@ -95,9 +95,8 @@ function normalMode() {
         if (Shop === "Ha20" || Shop === "Ha18") {
             hrs = 10.5;
         } else if (Shop === "2smena" || Shop === "2 smena") {
-            if(dayOfWeek !== 'sat') hrs = 9;
-            else if(dayOfWeek !== 'sun') hrs = 9;
-            else hrs = 8;
+            if(dayOfWeek === 'sat' || dayOfWeek === 'sun') hrs = 8
+            else hrs = 9
         } else {
             hrs = 12.5;
         }
